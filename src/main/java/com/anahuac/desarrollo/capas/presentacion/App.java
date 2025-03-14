@@ -10,15 +10,12 @@ public class App {
     IDAOLibro dao = new DAOLibroSqlite();
     ServicioLibros servicio = new ServicioLibros(dao);
     
-    Libro l = servicio.agregarLibro("ISBN1", "libro1", "autor1", "editorial1");
-    servicio.agregarLibro("ISBN2", "libro2", "autor2", "editorial2");
-    servicio.agregarLibro("ISBN3", "libro3", "autor3", "editorial3");
-  
+    Libro l = servicio.agregarLibro("ISBN1000", "libro1000", "autor1000", "editorial1000");
 
-    if(l == null) {
-      System.out.println("El id del libro es: " + l.getId());
+    if(l != null) {
+      System.out.println("Libro agregado: " + l.getId());
     } else {
-      System.out.println("El libro ya existe");
+      System.out.println("Libro no agregado, ya existe");
     }
   }
 }

@@ -13,7 +13,7 @@ public class DAOLibroSqlite implements IDAOLibro{
     public Connection getConnection() {
         Connection con = null;
         try {
-            String url = "jdbc:sqlite:/Users/alexi/OneDrive/Desktop/Folders/Semestre6/Ingenieria de Software/librosdb.db";
+            String url = "jdbc:sqlite:/Users/alexi/OneDrive/Desktop/Folders/Semestre6/IngenieriadeSoftware/librosdb.db";
             con = DriverManager.getConnection(url);
         } catch(Exception e) {
             System.out.println(e);
@@ -27,7 +27,7 @@ public class DAOLibroSqlite implements IDAOLibro{
         Libro libro = null;
         try {
             PreparedStatement ps;
-            ps = con.prepareStatement("INSERT INTO libro (nombre, autor, isbn, editorial) VALUES (?, ?, ?, ?)"); //Cuando tenemos valores de tipo cadena que pueden tener /'s y eso, se usa el ? para reemplazarlo directamente a la variable
+            ps = con.prepareStatement("INSERT INTO libros (nombre, autor, isbn, editorial) VALUES (?, ?, ?, ?)"); //Cuando tenemos valores de tipo cadena que pueden tener /'s y eso, se usa el ? para reemplazarlo directamente a la variable
             ps.setString(1, nombre);
             ps.setString(2, autor);
             ps.setString(3, isbn);
@@ -56,7 +56,7 @@ public class DAOLibroSqlite implements IDAOLibro{
         Libro libro = null;
         try {
             PreparedStatement ps;
-            ps = con.prepareStatement("SELECT * FROM libro WHERE isbn = ?");
+            ps = con.prepareStatement("SELECT * FROM libros WHERE isbn = ?");
             ps.setString(1, isbn);
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
