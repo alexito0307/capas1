@@ -14,7 +14,7 @@ public class ServicioLibros {
   public Libro agregarLibro(String isbn, String nombre, String autor, String editorial) { //Validar que el isbn sea unico
     Libro libro = daoLibro.findLibroByIsbn(isbn);
     if (libro == null) {
-      daolibro.createLibro(isbn, nombre, autor, editorial);
+      daoLibro.createLibro(isbn, nombre, autor, editorial);
       System.out.println("Libro agregado correctamente, su id es: " + libro.getId());
     } 
     return libro;

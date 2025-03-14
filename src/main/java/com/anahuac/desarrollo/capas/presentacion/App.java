@@ -18,7 +18,7 @@ public class App {
     if(l == null) {
       System.out.println("El id del libro es: " + l.getId());
     } else {
-      return null;
+      System.out.println("El libro ya existe");
     }
   }
 }

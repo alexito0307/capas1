@@ -3,6 +3,8 @@ package com.anahuac.desarrollo.capas.daos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
 
 import com.anahuac.desarrollo.capas.entidades.Libro;
 
@@ -14,7 +16,7 @@ public class DAOLibroSqlite implements IDAOLibro{
             String url = "jdbc:sqlite:/Users/alexi/OneDrive/Desktop/Folders/Semestre6/Ingenieria de Software/librosdb.db";
             con = DriverManager.getConnection(url);
         } catch(Exception e) {
-            System.out.println("Exception at connection: " + e());
+            System.out.println(e);
             }
         return con;
     }
@@ -22,7 +24,7 @@ public class DAOLibroSqlite implements IDAOLibro{
     public Libro createLibro(String nombre, String autor, String isbn, String editorial) {
         Connection con = getConnection();
         int id = -1;
-        Libro libro = null
+        Libro libro = null;
         try {
             PreparedStatement ps;
             ps = con.prepareStatement("INSERT INTO libro (nombre, autor, isbn, editorial) VALUES (?, ?, ?, ?)"); //Cuando tenemos valores de tipo cadena que pueden tener /'s y eso, se usa el ? para reemplazarlo directamente a la variable
@@ -44,12 +46,12 @@ public class DAOLibroSqlite implements IDAOLibro{
             ps.close();
         }
         catch(Exception e){
-            System.out.println("Error: " + e.printStackTrace());
+            System.out.println(e);
         }
         return libro;
     }
 
-    public Libro findByISBN(String isbn) {
+    public Libro findLibroByIsbn(String isbn) {
         Connection con = getConnection();
         Libro libro = null;
         try {
@@ -64,8 +66,32 @@ public class DAOLibroSqlite implements IDAOLibro{
             ps.close();
         }
         catch(Exception e) {
-            System.out.println("Error: " + e.printStackTrace());
+            System.out.println(e);
         }
         return libro;
+    }
+
+    @Override
+    public Libro obtenerLibro(int id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerLibro'");
+    }
+
+    @Override
+    public boolean modificarLibro(Libro libro) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'modificarLibro'");
+    }
+
+    @Override
+    public void borrarLibro(String isbn) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'borrarLibro'");
+    }
+
+    @Override
+    public List<Libro> obtenerAllLibros() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerAllLibros'");
     }
 }

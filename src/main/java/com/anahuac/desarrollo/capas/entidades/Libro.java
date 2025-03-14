@@ -7,6 +7,13 @@ public class Libro {
   private String autor;
   private String editorial;
   private String isbn;
+  public Libro (int id, String nombre, String autor, String isbn, String editorial) {
+    this.id = id;
+    this.nombre = nombre;
+    this.autor = autor;
+    this.isbn = isbn;
+    this.editorial = editorial;
+  }
 
   public int getId() {
     return id;
