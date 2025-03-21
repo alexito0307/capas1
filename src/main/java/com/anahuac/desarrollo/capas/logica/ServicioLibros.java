@@ -15,7 +15,11 @@ public class ServicioLibros {
     Libro libro = daoLibro.findLibroByIsbn(isbn);
     if (libro == null) {
       libro = daoLibro.createLibro(isbn, nombre, autor, editorial);
-    } 
+      System.out.println(libro.toString());
+      System.out.println("Libro agregado: " + libro.getNombre());
+    } else {
+      System.out.println("Ya existe el libro.");
+    }
     return libro;
   }
 }
